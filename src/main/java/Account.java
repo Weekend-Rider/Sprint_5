@@ -11,9 +11,13 @@ public class Account {
 
     public boolean checkNameToEmboss() {
 
-        Pattern pattern = Pattern.compile("^(?=.{3,19}$)[а-яёА-ЯЁa-zA-Z]+\\s[а-яёА-ЯЁa-zA-Z-]+$");
-        Matcher matcher = pattern.matcher(name);
-        return matcher.find();
+        try {
+            Pattern pattern = Pattern.compile("^(?=.{3,19}$)[а-яёА-ЯЁa-zA-Z]+\\s[а-яёА-ЯЁa-zA-Z-]+$");
+            Matcher matcher = pattern.matcher(name);
+            return matcher.find();
+        } catch (NullPointerException exception) {
+            return false;
+        }
 
     }
 
